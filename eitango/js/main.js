@@ -19,6 +19,8 @@ function csv_array(data) {
 }
 
 let dom_ls = {};
+dom_ls.main = document.getElementById("main");
 dom_ls.card = document.createElement("div");
 dom_ls.card.setAttribute("class","card");
 dom_ls.card.innerText = "あいうえお";
+dom_ls.main.appendChild(dom_ls.card);
