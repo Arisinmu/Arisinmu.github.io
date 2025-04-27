@@ -14,8 +14,11 @@ function csv_array(data) {
 	for (let i = 0; i < dataString.length; i++) { //あるだけループ
 		dataArray[i] = dataString[i].split(',');
 	}
-	console.log(dataArray);
+	return dataArray;
 
 }
-csv_data('csv/main.csv');
 
+let dom_ls = {};
+dom_ls.card = document.createElement("div");
+dom_ls.card.setAttribute("class","card");
+dom_ls.card.innerText = "あいうえお";
