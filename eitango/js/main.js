@@ -21,6 +21,48 @@ function csv_array(data) {
 let dom_ls = {};
 dom_ls.main = document.getElementById("main");
 dom_ls.card = document.createElement("div");
+dom_ls.card_child = document.createElement("div");
 dom_ls.card.setAttribute("class","card");
-dom_ls.card.innerText = "あいうえお";
+dom_ls.card_child.setAttribute("class","card_child");
+dom_ls.card.appendChild(dom_ls.card_child);
+dom_ls.card_child.innerText = "あいうえお";
 dom_ls.main.appendChild(dom_ls.card);
+
+
+dom_ls.card.addEventListener("touchstart",touchstart);
+var x;
+var y;
+function touchstart(event){
+	this.classList.add("drag");
+	var drag = document.getElementsByClassName("drag")[0];
+	x = event.changedTouches[0].pageX;
+  y = event.changedTouches[0].pageY;
+  drag.addEventListener("touchmove",touch);
+}
+function touch(event){
+	var drag = document.getElementsByClassName("drag")[0];
+	drag.style.left = event.changedTouches[0].pageX - x + "px";
+	drag.addEventListener("touchend", mup, false);
+
+}
+function mup(e){
+	var drag = document.getElementsByClassName("drag")[0];
+	drag.removeEventListener("touchmove", touch, false);
+	drag.style.left = 0;
+}
+
+let stage_ls = {
+	home: [[],[]],
+	tango: [["card","card_child"],[]]
+
+
+}
+function stage(xx){
+	for(let e in dom_ls) {
+		dom_ls[e].classList.add("kesu");
+  }
+	dom_ls.main.classList.remove("kesu");
+	for(let i = 0;i<stage_ls[xx][0].length;i++){
+		dom_ls[stage_ls[xx][0][i]].classList.remove("kesu");
+	}
+}
