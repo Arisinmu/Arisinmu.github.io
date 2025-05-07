@@ -8,7 +8,8 @@ let storage = {};
 let storageName = "";
 export class OperatingStorage{
   constructor(name){
-    storage = jsonToObject(localStorage.getItem(name)) ?? {};
+    storageName = name;
+    storage = jsonToObject(localStorage.getItem(storageName)) ?? {};
   }
   save(name,value){
     storage[name] = value;
