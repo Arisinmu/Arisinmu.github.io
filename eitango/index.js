@@ -5,7 +5,9 @@ import { toMemorizeWord } from "./js/toMemorizeWord.js";
 
 import { csvData } from "./js/operateCssdata.js";
 import { MenuDom } from "./js/menuDom.js"
-
+document.oncontextmenu = () => {
+  return false;
+};
 
 
 
