@@ -1,3 +1,11 @@
+*{
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  touch-action: none;
+}
 body{
   width: 100vw;
   height: 100dvh;
