@@ -4,35 +4,49 @@ dom_ls.main = document.getElementById("main");
 import { toMemorizeWord } from "./js/toMemorizeWord.js";
 
 import { csvData } from "./js/operateCssdata.js";
-import { MenuDom } from "./js/menuDom.js"
-document.oncontextmenu = () => {
-  return false;
-};
+import { MenuDom } from "./js/menuDom.js";
+
+import { createElement } from "./js/createElement.js";
 
 
 
+
+dom_ls.header = new createElement(dom_ls.main,"header");
+dom_ls.content = new createElement(dom_ls.main,"content");
+dom_ls.footer = new createElement(dom_ls.main,"footer");
 const app_list = {
-	menu: new MenuDom(dom_ls.main,"menu"),
-	app1 : new toMemorizeWord(dom_ls.main)
+	app1 : new toMemorizeWord(dom_ls.content.main)
 }
-app_list.menu.createMenu(5);
-dom_ls.begininput = document.createElement("input");
-dom_ls.begininput.setAttribute("type","number");
-dom_ls.main.appendChild(dom_ls.begininput);
-dom_ls.endinput = document.createElement("input");
-dom_ls.endinput.setAttribute("type","number");
-dom_ls.main.appendChild(dom_ls.endinput);
-dom_ls.randinput = document.createElement("input");
-dom_ls.randinput.setAttribute("type","checkbox");
-dom_ls.main.appendChild(dom_ls.randinput);
-dom_ls.buttoninput = document.createElement("input");
-dom_ls.buttoninput.setAttribute("type","button");
-dom_ls.main.appendChild(dom_ls.buttoninput);
-dom_ls.buttoninput.addEventListener("click",() =>{
+for(let i = 0;i < 3;i++){
+	dom_ls.header.createChild(i);
+	dom_ls.footer.createChild(i);
+}
 
-	requireCsv.csv_data("./csv/highschool1.csv",letstart);
+dom_ls.app1Option = new createElement(dom_ls.content.main,"app1Option");
 
-})
+
+dom_ls.app1Option.createChild("begininput",{
+	tagName : "input",
+	type :"number"
+});
+dom_ls.app1Option.createChild("endinput",{
+	tagName : "input",
+	type :"number"
+});
+dom_ls.app1Option.createChild("randinput",{
+	tagName : "input",
+	type :"checkbox"
+});
+dom_ls.app1Option.createChild("startbutton",{
+	tagName : "input",
+	type :"button",
+	func : () => {
+		requireCsv.csv_data("./csv/highschool1.csv",letstart);
+	}
+});
+
+
+
 
 let highschool1Word = {
 	name:"高校1年",
@@ -41,15 +55,13 @@ let highschool1Word = {
 const requireCsv = new csvData;
 function letstart(list){
 	highschool1Word.main = list;
+	let optionData = dom_ls.app1Option.dom_ls;
 	app_list.app1.option.wordList = highschool1Word.main;
-	app_list.app1.option.beginNumber = dom_ls.begininput.value;
-  app_list.app1.option.endNumber = dom_ls.endinput.value;
-	app_list.app1.option.randomOrNot = dom_ls.randinput.checked;
+	app_list.app1.option.beginNumber = optionData.begininput.value;
+  app_list.app1.option.endNumber = optionData.endinput.value;
+	app_list.app1.option.randomOrNot = optionData.randinput.checked;
 
-	dom_ls.begininput.classList.add("kesu");
-	dom_ls.endinput.classList.add("kesu");
-	dom_ls.randinput.classList.add("kesu");
-	dom_ls.buttoninput.classList.add("kesu");
+	dom_ls.app1Option.disappear();
 
 	app_list.app1.start();
 }
