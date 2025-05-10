@@ -64,6 +64,9 @@ body{
   width: 90%;
   margin: 5% 5% 0% 5%;
 }
+input{
+  -webkit-appearance: none;
+}
 .app1OptionC_begininput,
 .app1OptionC_endinput{
   width: 100%;
