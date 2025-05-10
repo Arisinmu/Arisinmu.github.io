@@ -3,6 +3,7 @@
 "short_name": "Sample",
 "display": "standalone",
 "background_color": "#F3EDF7",
+"theme-color": "#F3EDF7",
 "icons": [
     {
         "src": "img/192.jpg",
