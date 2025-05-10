@@ -24,7 +24,8 @@ body{
   height: 100%;
 }
 .card{
-  position: absolute;
+  position: relative;
+  transition: .2;
   margin: 7% 10%;
   width: 80%;
   height: 90%;
@@ -33,13 +34,28 @@ body{
   text-align: center;
   vertical-align: middle;
   display: table;
+  box-shadow: 4px 3px 5px gray;
 }
+@keyframes cardTurning{
+  to {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+
+.cardTurning{
+  animation: cardTurning 0.1s ease-in-out forwards;
+}
+
+
 .card_child{
+  
   display: table-cell;
 	vertical-align: middle;
   font-size : 150%;
   word-break: break-all;
+  
 }
+
 .kesu{
   display: none;
 }
@@ -91,9 +107,11 @@ body{
   height: 5vh;
   outline : none;
 }
+
 .app1OptionC_begininput > input:focus,
 .app1OptionC_endinput > input:focus {
   position: absolute;
   top: 0;
   left: 0;
 }
+

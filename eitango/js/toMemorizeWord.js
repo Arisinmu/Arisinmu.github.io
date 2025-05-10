@@ -3,6 +3,7 @@ let memoryWord = new MemoryWord("app1");
 
 export class toMemorizeWord {
   constructor(main_dom){
+    this.missList = {};
     this.option= {
 	  wordList : null,
 	  wordListName :null,
@@ -14,7 +15,7 @@ export class toMemorizeWord {
     this.dom_ls = {};
     this.dom_ls.main = main_dom;
   }
-  start(){
+  start(finishFunc){
     let start_this = this;
     let dom_ls = this.dom_ls;
     let WordList,
@@ -69,7 +70,6 @@ export class toMemorizeWord {
           drag.removeEventListener("touchend", CardLeave, false);
         }
       }
-  
       function RightScrollEvent(){
         if(!NowMissWordList[cardCue[0]]){
           PassMissedCardInput();
@@ -81,17 +81,24 @@ export class toMemorizeWord {
         ChangeToNextCard();
       }
       function TurnCardEvent(){
-      
-        //cardCue[0] は現在の単語
+        let isTurnNum = 0;
         if(isTurning){
-          isTurning = false;
-          dom_ls.card_child.innerText = WordList[cardCue[0]][0];
+          isTurnNum = 0;
         }else{
-          isTurning = true;
-          dom_ls.card_child.innerText = WordList[cardCue[0]][1];
+          isTurnNum = 1;
         }
+        isTurning = !isTurning;
+
+        dom_ls.card.classList.add("cardTurning");
+        setTimeout(() => {
+          dom_ls.card_child.innerText = WordList[cardCue[0]][isTurnNum];
+          dom_ls.card.classList.remove("cardTurning");
+
+
+        },150);
+
+
       }
-  
     function ChangeToNextCard(){
       
       document.getElementsByClassName("drag")[0].style.left =  "0px";
@@ -102,8 +109,8 @@ export class toMemorizeWord {
         gamefinish();
         return;
       }
-      console.log(cardCue.length);
         dom_ls.card_child.innerText = WordList[cardCue[0]][0];
+
     }
     function PassMissedCardInput(){
       NowMissWordList[cardCue[0]]++;
@@ -118,9 +125,10 @@ export class toMemorizeWord {
     }
     function MissCardInput(){
       
-      
+      start_this.missList[cardCue[0]] = start_this.missList[cardCue[0]] + 1 || 1;
       let totalMissList = memoryWord.get(start_this.option.wordListName);
-      console.log(totalMissList);
+     
+      
       totalMissList[cardCue[0]] = totalMissList[cardCue[0]] + 1 || 1;
       memoryWord.save(totalMissList);
 
@@ -132,11 +140,15 @@ export class toMemorizeWord {
       if(typeof dom_ls.card === 'undefined'){//カードが作られていなかったら
         dom_ls.card = document.createElement("div"); //カード本体
         dom_ls.card_child = document.createElement("div"); //カードの文字
+        dom_ls.card_child2 = document.createElement("div");
         dom_ls.card.setAttribute("class","card");
         dom_ls.card_child.setAttribute("class","card_child");
+        dom_ls.card_child2.setAttribute("class","card_child2");
         dom_ls.card.appendChild(dom_ls.card_child);
+        dom_ls.card.appendChild(dom_ls.card_child2);
         dom_ls.main.appendChild(dom_ls.card);
       }
+      dom_ls.card.classList.remove("kesu");
       CardCount = 0;
       NowMissWordList = {};//{数字:回数}
       isTurning = false;
@@ -164,13 +176,19 @@ export class toMemorizeWord {
       }
        console.log(cardCue);
       dom_ls.card_child.innerText = WordList[cardCue[0]][0];
+     
+
     }
   
     function CardEventCreate(){
       dom_ls.card.addEventListener("touchstart",CardTouchStart);
     }
     function gamefinish(){
+      dom_ls.card.classList.add("kesu");
 
+      finishFunc(start_this.missList);
+      console.log("ん、終わった");
+      console.log(start_this.missList);
     }
     function confirmingValue(){
 

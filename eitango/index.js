@@ -62,6 +62,26 @@ let highschool1Word = {
 	name:"高校1年",
 	main:[]
 };
+function showMiss(missList){
+	let table = document.createElement("table");
+	dom_ls.content.main.appendChild(table);
+	for(let i in missList){
+		let tr = document.createElement("tr");
+		let thleft = document.createElement("th");
+		let thcenter = document.createElement("th");
+		let thright = document.createElement("th");
+	  table.appendChild(tr);
+	  tr.appendChild(thleft);
+		tr.appendChild(thcenter);
+	  tr.appendChild(thright);
+		thleft.innerText = app_list.app1.option.wordList[i][0];
+		thcenter.innerText = app_list.app1.option.wordList[i][1];
+		thright.innerText = missList[i];
+	}
+
+
+
+}
 const requireCsv = new csvData;
 function letstart(list){
 	highschool1Word.main = list;
@@ -73,8 +93,10 @@ function letstart(list){
 
 	dom_ls.app1Option.disappear();
 
-	app_list.app1.start();
+	app_list.app1.start(showMiss);
 }
+
+
 
 app_list.app1.option.wordList = highschool1Word.main;
 app_list.app1.option.wordListName = highschool1Word.name;
