@@ -166,7 +166,6 @@ export class toMemorizeWord {
         cardCue[i] = i + beginNumber;
       }
       //ソート順をランダムに変更するため
-      console.log(letSortCards);
       if(start_this.option.randomOrNot){
         for(let i = 0;i < numberOfbeginning;i++){
           let randomSelectedCard  = Math.floor(Math.random() * letSortCards.length);

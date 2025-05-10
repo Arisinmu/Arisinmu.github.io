@@ -7,14 +7,26 @@ export class createElement{
     parent.appendChild(this.main);
   }
   createChild(Name,option = {
-    tagName : "div"
-  }){
+    tagName : "div",
+    mainrequire: true
+    }){
+    let letoption = {
+    tagName : "div",
+    mainrequire: true
+    }
+    for(let i in letoption){
+      option[i] = option[i] ?? letoption[i];
+    }
+
     this.dom_ls[Name + "_main"] = document.createElement("div");
     this.dom_ls[Name] = document.createElement(option.tagName);
-    console.log(this.dom_ls[Name + "_main"]);
-    this.dom_ls[Name + "_main"].classList.add(this.className + "C",this.className + "C_" + Name);
-    this.main.appendChild(this.dom_ls[Name + "_main"]);
-    this.dom_ls[Name + "_main"].appendChild(this.dom_ls[Name]);
+    let parent = option.mainrequire ? this.dom_ls[Name +"_main"] : this.dom_ls[Name];
+    parent.classList.add(this.className + "C",this.className + "C_" + Name);
+    this.main.appendChild(parent);
+    if(option.mainrequire){
+      this.dom_ls[Name + "_main"].appendChild(this.dom_ls[Name]);
+    }
+    
     if(option.attribute){
       for(let i in option.attribute){
         this.dom_ls[Name].setAttribute(i,option.attribute[i]);

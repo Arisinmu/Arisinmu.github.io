@@ -9,7 +9,11 @@ import { MenuDom } from "./js/menuDom.js";
 import { createElement } from "./js/createElement.js";
 
 
-
+const list_wordList = [
+	"highschool1.csv",
+	"highschool2.csv",
+	"highschool3.csv"
+];
 
 dom_ls.header = new createElement(dom_ls.main,"header");
 dom_ls.content = new createElement(dom_ls.main,"content");
@@ -39,21 +43,39 @@ dom_ls.app1Option.createChild("endinput",{
 		inputmode: "numeric"
 	}
 });
+dom_ls.app1Option.createChild("Listinput",{
+	tagName : "input",
+	attribute: {
+		list:"worddata"
+	}
+});
 dom_ls.app1Option.createChild("randinput",{
 	tagName : "input",
 	attribute: {
 		type:"checkbox"
 	}
 });
+dom_ls.worddata = new createElement(dom_ls.content.main,"worddata","datalist");
+dom_ls.worddata.main.setAttribute("id","worddata");
+for(let i of list_wordList){
+	dom_ls.worddata.createChild("",{
+		mainrequire: false,
+		tagName: "option",
+		attribute: {
+			value: i
+		}
+	});
+}
 dom_ls.app1Option.createChild("startbutton",{
 	tagName : "input",
 	attribute: {
 		type:"button"
 	},
 	func : () => {
-		requireCsv.csv_data("./csv/highschool1.csv",letstart);
+		requireCsv.csv_data("./csv/"+dom_ls.app1Option.dom_ls.Listinput.value,letstart);
 	}
 });
+
 
 
 
