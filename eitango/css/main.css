@@ -3,7 +3,7 @@
   user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  
+  -webkit-appearance: none;
   touch-action: none;
 }
 *:focus{
@@ -76,7 +76,7 @@ body{
   margin: 0 3px 0 3px ;
   border: 0;
   border-radius: 0;
-  -webkit-appearance: none;
+  
   font-size: 14px;
   outline : none;
 }
