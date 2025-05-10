@@ -82,3 +82,8 @@ body{
   font-size: 14px;
   outline : none;
 }
+input:focus {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
