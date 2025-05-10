@@ -143,8 +143,8 @@ export class toMemorizeWord {
       WordList = start_this.option.wordList;
     }
     function CardInitialize() {
-      let beginNumber =  start_this.option.beginNumber;
-      let endNumber =  start_this.option.endNumber;
+      let beginNumber =  start_this.option.beginNumber - 0 ;
+      let endNumber =  start_this.option.endNumber - 0;
       let numberOfbeginning = endNumber - beginNumber + 1;
       timingfinished  = numberOfbeginning;
       let letSortCards = [];
