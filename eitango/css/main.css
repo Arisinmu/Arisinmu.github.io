@@ -64,9 +64,7 @@ body{
   width: 90%;
   margin: 5% 5% 0% 5%;
 }
-input{
-  -webkit-appearance: none;
-}
+
 .app1OptionC_begininput,
 .app1OptionC_endinput{
   width: 100%;
@@ -76,4 +74,8 @@ input{
   border: 0;
   border-radius: 0;
   -webkit-appearance: none;
+}
+.app1OptionC_begininput:focus,
+.app1OptionC_endinput:focus{
+  outline: none;
 }
