@@ -23,10 +23,10 @@ body{
 }
 .card{
   position: absolute;
-  margin: 3% 5%;
-  width: 90%;
-  height: 94%;
-  border-radius: 25px;
+  margin: 7% 10%;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
   background-color: white;
   text-align: center;
   vertical-align: middle;
