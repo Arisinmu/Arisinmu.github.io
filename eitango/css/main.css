@@ -5,7 +5,7 @@
   -ms-user-select: none;
   -webkit-appearance: none;
   appearance: none;
-  touch-action: manipulation;
+  touch-action: none;
 }
 *:focus{
   outline: none;
