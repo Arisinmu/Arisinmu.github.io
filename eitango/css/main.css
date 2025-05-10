@@ -66,23 +66,33 @@ body{
   background-color: #d9d9d9;
 }
 .app1Option{
-  position: relative;
+
   width: 90%;
+  
   margin: 5% 5% 0% 5%;
 }
-
 .app1OptionC_begininput,
 .app1OptionC_endinput{
+  position: relative;
+  width: 100%;
+  height: 5vh;
+  margin: 3px 0 3px 0;
+}
+
+.app1OptionC_begininput > input,
+.app1OptionC_endinput > input{
+  position: absolute;
+  width: 100%;
   padding: 0;
   margin: 0;
   border: 0;
   border-radius: 0;
-  
-  font-size: 14px;
+  font-size: 16px;
+  height: 5vh;
   outline : none;
 }
-.app1OptionC_begininput:focus,
-.app1OptionC_endinput:focus {
+.app1OptionC_begininput > input:focus,
+.app1OptionC_endinput > input:focus {
   position: absolute;
   top: 0;
   left: 0;
