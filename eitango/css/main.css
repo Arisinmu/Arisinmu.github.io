@@ -78,5 +78,5 @@ body{
   border-radius: 0;
   -webkit-appearance: none;
   font-size: 14px;
-}
+  outline : none;
 }
