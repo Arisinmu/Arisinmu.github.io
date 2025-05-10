@@ -9,6 +9,7 @@
 }
 *:focus{
   outline: none;
+  touch-action: none;
 }
 body{
   width: 100vw;
