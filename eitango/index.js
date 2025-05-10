@@ -27,19 +27,23 @@ dom_ls.app1Option = new createElement(dom_ls.content.main,"app1Option");
 
 dom_ls.app1Option.createChild("begininput",{
 	tagName : "input",
-	type :"number"
+	attributeName: "inputmode",
+	attribute: "numeric"
 });
 dom_ls.app1Option.createChild("endinput",{
 	tagName : "input",
-	type :"number"
+	attributeName: "inputmode",
+	attribute: "numeric"
 });
 dom_ls.app1Option.createChild("randinput",{
 	tagName : "input",
-	type :"checkbox"
+	attributeName: "type",
+	attribute: "checkbox"
 });
 dom_ls.app1Option.createChild("startbutton",{
 	tagName : "input",
-	type :"button",
+	attributeName: "type",
+	attribute: "button",
 	func : () => {
 		requireCsv.csv_data("./csv/highschool1.csv",letstart);
 	}

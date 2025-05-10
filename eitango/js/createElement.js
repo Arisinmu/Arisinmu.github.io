@@ -12,8 +12,8 @@ export class createElement{
     this.dom_ls[Name] = document.createElement(option.tagName);
     this.dom_ls[Name].classList.add(this.className + "C",this.className + "C_" + Name);
     this.main.appendChild(this.dom_ls[Name]);
-    if(option.type){
-      this.dom_ls[Name].setAttribute("type",option.type);
+    if(option.attributeName){
+      this.dom_ls[Name].setAttribute(option.attributeName,option.attribute);
     }
     if(option.func){
       this.dom_ls[Name].addEventListener("click",option.func);
