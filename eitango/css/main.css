@@ -82,8 +82,10 @@ body{
   font-size: 14px;
   outline : none;
 }
-input:focus {
+.app1OptionC_begininput:focus,
+.app1OptionC_endinput:focus {
   position: absolute;
+  font-size: 14px;
   top: 0;
   left: 0;
 }
