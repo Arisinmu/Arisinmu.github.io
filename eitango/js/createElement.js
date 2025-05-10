@@ -12,7 +12,8 @@ export class createElement{
     this.dom_ls[Name + " _main"] = document.createElement("div");
     this.dom_ls[Name] = document.createElement(option.tagName);
     this.dom_ls[Name + "_main"].classList.add(this.className + "C",this.className + "C_" + Name);
-    this.main.appendChild(this.dom_ls[Name]);
+    this.main.appendChild(this.dom_ls[Name + "_main"]);
+    this.dom_ls[Name + "_main"].appendChild(this.dom_ls[Name]);
     if(option.attributeName){
       this.dom_ls[Name].setAttribute(option.attributeName,option.attribute);
     }
