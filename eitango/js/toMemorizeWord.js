@@ -150,8 +150,8 @@ export class toMemorizeWord {
       let letSortCards = [];
       cardCue = [];
       for(let i = 0;i < numberOfbeginning;i++){
-        letSortCards[i] = i;
-        cardCue[i] = i;
+        letSortCards[i] = i + beginNumber;
+        cardCue[i] = i + beginNumber;
       }
       //ソート順をランダムに変更するため
       console.log(letSortCards);
