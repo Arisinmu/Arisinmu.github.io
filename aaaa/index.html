@@ -92,6 +92,7 @@
         height: 100%;
         background: linear-gradient(90deg, var(--blue-primary), var(--blue-secondary));
         transition: width 0.4s ease-in-out;
+        translateZ(0);
     }
 
     p#score {
@@ -106,6 +107,7 @@
       margin: 0.5em 0;
       min-height: 1.5em;
       animation: pop-in 0.3s ease-out;
+      translateZ(0);
     }
     
     p#time-display {
@@ -143,6 +145,7 @@
     button:active {
       transform: translateY(-1px) scale(0.98);
       box-shadow: var(--shadow);
+      translateZ(0);
     }
 
     #choices, #main-menu {
@@ -171,6 +174,7 @@
         color: var(--text-light) !important; 
         border-color: var(--red-dark) !important; 
         animation: shake 0.4s;
+      translateZ(0);
     }
 
     #control-buttons {
@@ -195,6 +199,7 @@
       border-radius: 16px;
       box-shadow: var(--shadow);
       animation: fadeIn 0.4s ease-in-out;
+      translateZ(0);
     }
     .screen h2 { margin-top: 0; text-align: center; color: var(--blue-primary); }
     
@@ -207,6 +212,7 @@
         display: flex; justify-content: center; align-items: center;
         flex-direction: column; z-index: 1000;
         animation: fadeIn 0.3s;
+      translateZ(0);
     }
     #start-prompt button { padding: 1.5em 3em; font-size: 1.2em; background-color: var(--blue-primary); color: white; border: none; }
 
